@@ -7,6 +7,10 @@ public class FloatingPlatformController : MonoBehaviour
     [SerializeField]
     GameObject Platform;
 
+    [SerializeField]
+    AudioClip[] audioClips;
+
+    private AudioSource audioSource;
     private BoxCollider2D boxCollider2D;
     private bool triggered = false;
     private bool shrunk = false;
@@ -17,6 +21,7 @@ public class FloatingPlatformController : MonoBehaviour
     void Start()
     {
         boxCollider2D = GetComponent<BoxCollider2D>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -31,6 +36,8 @@ public class FloatingPlatformController : MonoBehaviour
                 triggered = false;
                 shrunk = true;
                 Debug.Log("Platform reached smallest value");
+                audioSource.clip = audioClips[1];
+                audioSource.Play();
             }
         }
         else if (shrunk == true)
@@ -50,6 +57,8 @@ public class FloatingPlatformController : MonoBehaviour
         if (collision.collider.CompareTag("Player"))
         {
             triggered = true;
+            audioSource.clip = audioClips[0];
+            audioSource.Play();
         }
     }
 }
