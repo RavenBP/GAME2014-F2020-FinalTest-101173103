@@ -14,7 +14,7 @@ public class FloatingPlatformController : MonoBehaviour
     private BoxCollider2D boxCollider2D;
     private bool triggered = false;
     private bool shrunk = false;
-    private float amount = 0.001f;
+    private float amount = 0.01f;
     private float scale = 1.0f;
 
     // Start is called before the first frame update
